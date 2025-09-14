@@ -1,226 +1,88 @@
 # Documentación HTML
 
-## Intro
+## Introducción
 
 ### ¿Qué es HTML?
-
-HTML (**HyperText Markup Language**) es el lenguaje de marcado estándar para crear páginas web.  
-**Nota:** No es un lenguaje de programación, sino de estructura y contenido.
-
----
+HTML (**HyperText Markup Language**) es el lenguaje estándar para crear páginas web. No es un lenguaje de programación, sino de estructura y contenido.
 
 ### W3C: El Consorcio de la Web
-
-HTML es gestionado por el **World Wide Web Consortium (W3C)**, organización encargada de estandarizar las tecnologías web.  
-El W3C asegura que HTML sea compatible y visualizable en todos los navegadores actuales.
-
----
+HTML es gestionado por el **World Wide Web Consortium (W3C)**, encargado de estandarizar tecnologías web y asegurar compatibilidad entre navegadores.
 
 ### Historia y creador
-
-**Sir Tim Berners-Lee** es el creador de la World Wide Web y de HTML.  
-- En 1990 realizó la primera comunicación cliente-servidor usando HTTP.
-- En 1994 fundó el W3C para estandarizar tecnologías web.
-- Desarrolló HTML, HTTP y el sistema de URLs.
-
----
+**Tim Berners-Lee** creó la Web y HTML. En 1990 realizó la primera comunicación HTTP y en 1994 fundó el W3C.
 
 ### Filosofía de trabajo web
-
-- **HTML:** estructura y semántica del contenido.
-- **CSS:** diseño y presentación visual.
-- **JavaScript:** comportamiento e interacción dinámica.
-
----
+- **HTML:** estructura y semántica
+- **CSS:** diseño visual
+- **JavaScript:** interacción
 
 ## Normas Generales
 
-### Archivos
-
-Para crear nuestra primera página web, lo primero que tenemos que hacer es crear un archivo con el formato adecuado:
-
-- En nuestro espacio destinado a almacenar el contenido de los ejercicios, mediante el explorador de archivos creamos un archivo nuevo con el nombre `index.html`.
-- Abrimos este nuevo archivo en nuestro editor de código.
-- ¡Ya estamos listos!
-- Para ver el resultado de nuestro código tendremos que abrir el archivo también en el navegador, pero eso será más adelante.
-
-### Nombres y extensiones de archivos
-
-Los nombres de archivos deberán seguir una normativa estándar:
-
-- El archivo principal se llamará siempre `index.html`
-- Extensión `.html` mejor que `.htm`
-- Todo en minúsculas
-- Sin tildes ni similares (á à ä å ñ š ĉ ç ...)
-- Sin caracteres de símbolos (¿? ¡! () {} [] ; : % & ...)
-- Sin espacios (reemplazamos espacios por guión medio -mejor que guión bajo)
-
----
+### Archivos y nombres
+Para crear una página web, crea un archivo `index.html` en minúsculas, sin tildes, símbolos ni espacios (usa guión medio). La extensión recomendada es `.html`.
 
 ### Elementos y Etiquetas
+El código HTML se compone de elementos representados por etiquetas. Los elementos pueden contener otros elementos, formando una estructura jerárquica.
 
-El código fuente de una página web se compone de diferentes elementos que se representan mediante etiquetas con un nombre específico.  
-Los elementos pueden contener otros elementos, creando una estructura jerárquica (como un árbol genealógico).
-
-Salvo excepciones, todos los elementos tienen su correspondiente etiqueta de apertura y etiqueta de cierre. La etiqueta de cierre es igual que la de apertura, añadiéndole una barra `/`.
-
-Por convención y buenas prácticas, los nombres de las etiquetas se escriben en minúsculas y sin espacios entre los símbolos `<`, `</` y `>`.
+Por convención, las etiquetas se escriben en minúsculas y sin espacios entre los símbolos `<`, `</` y `>`.
 
 ```html
 <mietiqueta>
 </mietiqueta>
 ```
 
-Para las excepciones de etiquetas que no tengan etiqueta de cierre, llamadas etiquetas autoconclusivas, o con autocierre, podremos implementar el código de 2 maneras (ambas válidas, a gusto de cada uno).
-
-La primera opción, la más sencilla, se escribe simplemente la etiqueta de apertura, que a sí misma será también etiqueta de cierre:
-
+Algunas etiquetas son autoconclusivas:
 ```html
 <mietiquetaexcepcion>
-```
-
-La segunda opción, añadiendo un espacio y una barra `/` antes del símbolo `>` de la etiqueta:
-
-```html
 <mietiquetaexcepcion />
 ```
-
-Hay desarrolladores que utilizan esta segunda opción por motivos de paz mental o bien porque durante unos años era obligatorio hacerlo de esta manera. A día de hoy es una elección personal de cada persona, si bien lo que es más importante es mantener una homogeneidad en nuestro código. Si nos decidimos una opción, que siempre sea así y no mezclemos ambas opciones.
-
-Lo que no podremos hacer bajo ningún concepto es inventarnos una etiqueta de cierre al uso, si esa etiqueta es autoconclusiva:
-
+No inventes etiquetas de cierre para autoconclusivas:
 ```html
-<!-- esto es incorrecto -->
+<!-- Incorrecto -->
 <mietiquetaexcepcion>
 </mietiquetaexcepcion>
 ```
 
-### ¿Por qué existen tantas etiquetas diferentes?
-
-La principal misión de una página HTML es transmitir información indicando el significado de cada contenido. Es por ello que existen diversas etiquetas HTML para transmitir esta información semántica.
-
-La parte visual se gestionará desde CSS, totalmente independiente de la semántica.
-
 ### Comentarios
-
-Si queremos escribir un comentario en el código fuente, o bien ocultar una parte del código para que no se visualice en el navegador, usaremos las siguientes etiquetas de apertura y cierre (son ligeramente diferentes al resto de etiquetas y diferentes entre sí):
-
+Para escribir comentarios en HTML:
 ```html
-<!--
-Empieza el comentario
-
-Acaba el comentario
--->
-
-<!--
-Comentamos nuestra etiqueta inventada
-
-<mietiqueta>
-
-</mietiqueta>
-
-Acaba el comentario de nuestra etiqueta inventada
--->
-	
-Dentro de un comentario no se puede añadir otro, puesto que el cierre de ese comentario interior representaría el cierre definitivo, quedando contenido fuera de él:
-
-```html
-<!--
-Empieza el comentario
-
-	<!--
-	Comentamos nuestra etiqueta inventada
-
-	<mietiqueta>
-
-	</mietiqueta>
-
-	Acaba el comentario de nuestra etiqueta inventada
-	-->   <<< Esta etiqueta de cierre marca el cierre de todos los comentarios
-
-Acaba el comentario			<<< Este contenido se queda fuera del comentario
--->
-	
-A diferencia de ciertos lenguajes de programación, en HTML no se pueden implementar comentarios de una sola línea con una apertura de comentario (y sin cierre). Sólo existe el comentario normal, independientemente que éste abarque una palabra, una frase, una línea o mil líneas.
+<!-- Esto es un comentario -->
+```
+No se pueden anidar comentarios.
 
 ### Atributos
-
-La mayor parte de las etiquetas van a tener unos atributos que complementan o especifican ciertas características del elemento.
-
-A medida que vayamos aprendiendo nuevas etiquetas, veremos los atributos que se pueden utilizar en cada una de ellas, cuáles son obligatorios, sus particularidades, valores, etc.
-
-Los atributos se añaden siempre dentro de la etiqueta de apertura y constan de una palabra concreta y un valor. El valor va entrecomillado:
-
-```html
-<mietiqueta miatributo="mivalor">
-
-</mietiqueta>
-```
-
-Una etiqueta puede llevar varios atributos. Para separarlos se utiliza un espacio en blanco:
-
+Los atributos complementan las etiquetas y se añaden en la apertura:
 ```html
 <mietiqueta miatributo="mivalor" otroatributo="otrovalor">
-
 </mietiqueta>
 ```
-
-No se puede utilizar el mismo atributo repetido en una misma etiqueta:
-
-<!-- esto es incorrecto -->
-```html
-<mietiqueta miatributo="mivalor" miatributo="otrovalor">
-
-</mietiqueta>
-```
+No repitas el mismo atributo en una etiqueta.
 
 ## Esquema básico
 
-A continuación se muestra la estructura mínima y recomendada de un documento HTML, con explicaciones y ejemplos.
-
----
-
-### Estructura general del documento
-
-Todo documento HTML debe comenzar con la declaración del tipo de documento y el elemento raíz `<html>`:
-
+### Estructura general
+Todo documento HTML debe comenzar con:
 ```html
 <!DOCTYPE html>
 <html>
 </html>
 ```
 
----
-
 ### Idioma principal (`lang`)
-
-El atributo `lang` en la etiqueta `<html>` indica el idioma principal de la página.  
-Ejemplo para español:
-
+El atributo `lang` indica el idioma principal:
 ```html
 <!DOCTYPE html>
 <html lang="es">
 </html>
 ```
-
-También se puede especificar la región:
-
+Ejemplos de región:
 ```html
 <html lang="es-ES">
-<html lang="es-MX">
-<html lang="en">
-<html lang="en-UK">
 <html lang="en-US">
-<html lang="en-AU">
 ```
-
----
 
 ### Encabezado (`<head>`)
-
-El elemento `<head>` contiene información técnica y metadatos.  
-Ejemplo básico:
-
+Contiene metadatos:
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -228,105 +90,53 @@ Ejemplo básico:
   </head>
 </html>
 ```
-
----
 
 #### Codificación de caracteres
-
-Para definir la codificación de caracteres (UTF-8):
-
-```html
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-  </head>
-</html>
-```
-
-Etiqueta autoconclusiva:
-
+Para definir UTF-8:
 ```html
 <meta charset="utf-8">
 <meta charset="utf-8" />
 ```
-
-**Incorrecto:**
-
+No uses etiqueta de cierre:
 ```html
-<!-- esto es incorrecto -->
+<!-- Incorrecto -->
 <meta charset="utf-8">
 </meta>
 ```
 
----
-
 #### Título interno (`<title>`)
-
-El título que aparece en la pestaña del navegador se define con `<title>`:
-
+Define el título de la pestaña:
 ```html
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <title>Mi primera página</title>
-  </head>
-</html>
+<title>Mi primera página</title>
 ```
-
----
 
 ### Cuerpo del documento (`<body>`)
-
-El contenido visible de la página va dentro de `<body>`:
-
+El contenido visible va en `<body>`:
 ```html
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <title>Mi primera página</title>
-  </head>
-  <body>
-    <!-- El contenido visible -->
-  </body>
-</html>
+<body>
+  <!-- Contenido visible -->
+</body>
 ```
 
----
-
-**Resumen:**  
+**Resumen:**
 - Usa siempre `<!DOCTYPE html>` al inicio.
 - El elemento raíz es `<html lang="...">`.
 - Dentro de `<html>`, coloca `<head>` (con `<meta charset="utf-8">` y `<title>`) y `<body>`.
 - Todo el contenido visible va en `<body>`.
-[esquema básico](esquema-basico.html)
+
+### Recursos
+[Ejercicio Esquema Básico](Ejercicios/html-0-plantilla)
+[Ver esquema básico](esquema-basico.html)
 
 ## Validación
 
-Validar el código HTML es fundamental para asegurar que la página cumple los estándares y evitar errores de visualización.
-
----
-
 ### ¿Por qué validar?
-
-Al igual que revisamos la ortografía en un texto, debemos comprobar que nuestro código HTML no tiene errores. Esto garantiza compatibilidad, accesibilidad y un funcionamiento correcto en todos los navegadores.
-
----
+Validar el código HTML asegura compatibilidad, accesibilidad y funcionamiento correcto en todos los navegadores.
 
 ### Herramienta recomendada
-
-El **W3C Validator** es la herramienta oficial para validar HTML. Permite comprobar el código de tres formas:
-
-- Indicando la URL de una página pública.
-- Subiendo un archivo HTML local.
-- Pegando el código fuente directamente.
-
----
+El **W3C Validator** permite validar HTML por URL, archivo o pegando el código.
 
 ### Ejemplo de código a validar
-
 ```html
 <!DOCTYPE html>
 <html lang="es">
@@ -341,33 +151,21 @@ El **W3C Validator** es la herramienta oficial para validar HTML. Permite compro
 </html>
 ```
 
----
-
-### Enlace al validador
-
-Accede al validador oficial aquí:  
-[https://validator.w3.org/](https://validator.w3.org/)
-
----
-
-### Recomendación
-
-Valida tu código frecuentemente, especialmente si algo no funciona como
-
+### Enlaces útiles
+- [Validador oficial W3C](https://validator.w3.org/)
+- [Validar por archivo](https://validator.w3.org/#validate_by_upload)
 
 ## Textos
 
 ### Párrafos
-Los párrafos estructuran la mayor parte de los contenidos web:
-
+Estructuran la mayor parte del contenido:
 ```html
 <p>este es un párrafo</p>
 <p>este es otro párrafo</p>
 ```
 
 ### Saltos de línea
-Para saltar de línea dentro de un párrafo (por ejemplo, en poemas o canciones) se usa el elemento `br`:
-
+Para saltos de línea dentro de un párrafo:
 ```html
 <p>
   Imagine there’s no heaven<br>
@@ -377,43 +175,207 @@ Para saltar de línea dentro de un párrafo (por ejemplo, en poemas o canciones)
 No uses dos `br` seguidos para simular un párrafo; usa CSS para separar párrafos.
 
 ### Énfasis y significado
-Para destacar texto importante o muy importante, usa los elementos semánticos `em` y `strong`:
-
+Para destacar texto importante:
 ```html
 <p>
   <strong>Aviso:</strong> No olvide utilizar un <em>DNI válido</em>.
 </p>
 ```
-Por defecto, `strong` se muestra en negrita y `em` en cursiva, pero esto puede cambiarse con CSS.
 
 ### Citas
-Para citar textos, existen dos elementos principales:
-
 #### Bloque de cita
 Para bloques de texto citados:
-
 ```html
 <blockquote>
-  <p>En un lugar de la Mancha, de cuyo nombre no quiero acordarme...</p>
-  <p>Una olla de algo más vaca que carnero...</p>
+  <p>En un lugar de la Mancha...</p>
 </blockquote>
 ```
-No uses `blockquote` solo para sangrías si no es una cita real.
-
 #### Citas en línea
-Para citas cortas en línea, usa `q` para el texto y `cite` para el autor:
-
+Para citas cortas:
 ```html
 <p>Como dijo <cite>Hamlet</cite>: <q>ser o no ser, esa es la cuestión</q>.</p>
 ```
 
 ### Abreviaturas
-Para marcar abreviaturas, siglas o acrónimos, usa `abbr` y el atributo `title` para el significado:
-
+Para marcar siglas o acrónimos:
 ```html
 <abbr title="Unión Europea">UE</abbr>
 ```
-El atributo `title` puede usarse en casi cualquier elemento HTML para complementar información.
+El atributo `title` puede usarse en casi cualquier elemento HTML para complementar información. No lo confundas con la etiqueta `<title>` del `<head>`.
 
-No confundas el atributo `title` con la etiqueta `<title>` del `<head>`, son cosas diferentes.
+### Recursos
+[Ejercicio](Ejercicios/html-1-pruebas)
+[html-textos](html-texto.html)
+[Generador texto aleatorio](https://es.lipsum.com/)
+[Elige tu Ipsum](https://idsgn.dropmark.com/107)
+
+
+
+## Enlaces
+
+### ¿Qué es un enlace?
+Los enlaces (vínculos o hiperenlaces) son la base de la navegación web. Se implementan con el elemento `<a>`, que requiere el atributo `href` (ruta) y el texto del enlace.
+
+### Estructura general
+```html
+<a href="ruta">texto del enlace</a>
+```
+
+### Ejemplos de rutas
+- Mismo directorio:
+```html
+<a href="mipagina.html">página personal</a>
+```
+- Subdirectorio:
+```html
+<a href="personal/mipagina.html">mi página</a>
+```
+- Nivel superior:
+```html
+<a href="../mipagina.html">mi página</a>
+```
+- Varios niveles:
+```html
+<a href="personal/io/mio/mipagina.html">mi página</a>
+<a href="../../../mipagina.html">mi página</a>
+```
+
+### Enlaces externos
+Los enlaces externos deben empezar por `http://` o `https://`.
+
+**Incorrecto:**
+```html
+<a href="google.es">Google</a>
+<a href="www.google.es">Google</a>
+<a href="http:www.google.es">Google</a>
+```
+**Correcto:**
+```html
+<a href="http://www.google.es">Google</a>
+<a href="https://www.google.es">Google</a>
+<a href="https://play.google.com/">Google Play</a>
+```
+
+### Atributo title
+El atributo `title` añade información adicional al enlace (aparece como tooltip). Úsalo solo si aporta valor.
+
+**Incorrecto:**
+```html
+<a href="http://www.yahoo.com" title="Yahoo">Yahoo</a>
+```
+**Correcto:**
+```html
+<a href="http://www.yahoo.com" title="Yahoo: noticias, e-mail, fotos, grupos, etc...">Yahoo</a>
+```
+
+### Enlaces en nueva ventana/pestaña
+Para abrir enlaces externos en nueva pestaña, usa:
+```html
+<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Google</a>
+```
+
+### Enlaces internos (anclas)
+Para saltar a una parte de la misma página, usa el atributo `id` en el destino y una almohadilla `#` en el enlace:
+```html
+<a href="#cancion2">Canción 2</a>
+...
+<p id="cancion2">Esta es la Canción 2</p>
+```
+Normas para el atributo `id`:
+- Debe ser único en la página
+- No puede empezar con número
+- Sin espacios ni caracteres especiales
+
+### Idioma de destino
+Si el enlace apunta a una página en otro idioma, usa el atributo `hreflang`:
+```html
+<a href="http://www.nasa.gov" hreflang="en">NASA</a>
+<a href="http://www.paris.fr" hreflang="fr">Ayuntamiento de París</a>
+```
+### Recursos
+[Ejercicio html Enlaces](Ejercicios/html-2-enlaces)
+
+
+
+## Imágenes
+
+### Sintaxis básica
+Las imágenes se insertan con la etiqueta `<img>`, que es autoconclusiva y requiere dos atributos obligatorios:
+- `src`: ruta de la imagen
+- `alt`: texto alternativo
+
+```html
+<img src="ruta" alt="texto alternativo">
+<img src="ruta" alt="texto alternativo" />
+<img src="logo.jpg" alt="ACME">
+<img src="logo.jpg" alt="ACME" />
+```
+
+**Incorrecto:**
+```html
+<img>
+<img src="logo.jpg">
+<img alt="ACME">
+```
+La ruta sigue las mismas reglas que los enlaces.
+
+### Texto alternativo (`alt`)
+El atributo `alt` es obligatorio y debe describir el contenido o función de la imagen:
+- Si la imagen está en un enlace, el `alt` debe ser el texto del enlace.
+- Si la imagen aporta información, el `alt` debe describirla.
+- Si es decorativa, deja `alt=""`.
+
+```html
+<img src="lavado-mano.jpg" alt="Lavado a mano">
+<img src="personas.jpg" alt="">
+<a href="https://www.google.es">
+  <img src="logo-google.jpg" alt="Google">
+</a>
+```
+
+### Atributo `title` en imágenes
+No es necesario usar `title` en imágenes salvo casos muy justificados. No debe duplicar el valor de `alt`.
+
+### Imágenes como enlace
+Puedes usar una imagen como enlace reemplazando el texto por la imagen:
+
+```html
+<a href="index.html">
+  <img src="mapa.gif" alt="mapa web">
+</a>
+```
+
+### Formatos recomendados
+
+#### Formatos recomendados de imagen
+
+- **JPG/JPEG**: Formato con compresión con pérdida, ideal para fotografías e imágenes con muchos colores y degradados. No soporta transparencia. Es el más usado para fotos en la web por su buena relación calidad/peso.
+- **PNG**: Soporta transparencia y compresión sin pérdida. Recomendado para logotipos, iconos, gráficos con fondo transparente o imágenes que requieren alta calidad. Suele pesar más que JPG.
+- **GIF**: Permite animaciones simples y transparencia binaria (sin semitransparencia). Útil para pequeños gráficos animados, pero limitado a 256 colores, por lo que no es adecuado para fotos.
+- **SVG**: Formato vectorial, ideal para iconos, logotipos y gráficos escalables sin pérdida de calidad. Muy ligero y editable con código. No apto para fotos.
+- **WEBP**: Formato moderno de Google, soporta compresión con y sin pérdida, transparencia y animación. Suele ofrecer mejor compresión que JPG y PNG, pero no es compatible con navegadores muy antiguos.
+
+**Resumen de uso:**
+- Usa **JPG** para fotos.
+- Usa **PNG** para gráficos con transparencia o alta calidad.
+- Usa **SVG** para iconos y logotipos.
+- Usa **WEBP** si buscas máxima optimización y compatibilidad moderna.
+- Usa **GIF** solo para animaciones simples.
+
+### Mapas de imágenes
+Permiten definir áreas activas (hotpots) sobre una imagen que actúan como enlaces. Actualmente se usan poco y, si se usan, deben ser responsive.
+
+
+<a href="index.html">
+	<img src="mapa.gif" alt="mapa web">
+</a>
+Formato de imagen a utilizar:
+Los formatos a utilizar son los generales para imágenes: PNG, JPG (JPEG) y GIF, SVG y WEBP.
+
+Un mapa de imágenes es simplemente una imagen sobre la que se definen unas áreas activas (hotpots) que actuarán como enlaces. Si tomamos una imagen de un mapa del mundo, por ejemplo, cada continente podría ser un área activa.
+
+En la actualidad apenas se utilizan y de hacerlo, usaremos un generador y nos aseguraremos de que el resultado sea Responsive.
+
+
+
 
