@@ -5,25 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bloques estructurales</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0px 60px;
-      background-color: #333;
-      color: #f9f9f9;
-      text-align: justify;
-    }
+  <link rel="stylesheet" href="estilo.css">
 
-    .resultado-ejemplo {
-      color: #4fc3f7;
-    }
-
-    .codigo-ejemplo {
-      color: #b39ddb;
-      font-family: 'Fira Mono', 'Consolas', monospace;
-    }
-  </style>
 </head>
 
 <body>
@@ -40,13 +23,11 @@
     relevantes, ayudas de navegación, etc. Pueden existir varios <code>header</code> en una página (en función del
     contenido).
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;header&gt;
     Aquí va la cabecera de la página siempre tiene que tener algún encabezado.
   &lt;/header&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <header>
       Aquí va la cabecera de la página siempre tiene que tener algún encabezado.
@@ -62,13 +43,11 @@
     ejemplo). El elemento <code>footer</code> no tiene por qué aparecer en el final de la sección. Pueden existir varios
     <code>footer</code> en una página.
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;footer&gt;
     Aquí va el pie de página.
   &lt;/footer&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <footer>
       Aquí va el pie de página.
@@ -84,8 +63,7 @@
     sólo puede tener como ancestros a <code>body</code>, <code>div</code> y <code>form</code> (este último, bajo ciertas
     circunstancias).
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;header&gt;
     Header: Aquí va la cabecera de la página.
   &lt;/header&gt;
@@ -98,7 +76,6 @@
     Footer: Aquí va el pie de página.
   &lt;/footer&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <header>
       Header: Aquí va la cabecera de la página.
@@ -118,8 +95,7 @@
     <code>nav</code>. Sólo se implementarán los bloques principales de navegación. Por ejemplo, el menú principal de la
     web sí que se incluiría en un elemento <code>nav</code>, pero un listado de enlaces a recursos externos, no.
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;header&gt;
     Aquí va la cabecera de la página.
     &lt;nav&gt;
@@ -146,7 +122,6 @@
     ...
   &lt;/footer&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <header>
       Aquí va la cabecera de la página.
@@ -180,13 +155,11 @@
     puede usar para implementar barras laterales, publicidad, elementos con efectos tipográficos (como las citas). No es
     adecuado utilizarlo para estructurar contenido explicativo, porque forma parte del contenido principal.
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;aside&gt;
     Aquí va una barra lateral con enlaces a artículos relacionados o publicidad.
   &lt;/aside&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <aside>
       Aquí va una barra lateral con enlaces a artículos relacionados o publicidad.
@@ -195,8 +168,8 @@
 
   <h2>Article</h2>
   <p>
-    El elemento <strong>article</strong> representa una composición autónoma (contenido único) en un documento, página,
-    aplicación o sitio web, con intención de poder ser reutilizado (por ejemplo, en un lector RSS, al imprimir la
+    El elemento <strong>article</strong> representa una composición autónoma (contenido único) en un documento,
+    página,aplicación o sitio web, con intención de poder ser reutilizado (por ejemplo, en un lector RSS, al imprimir la
     página, visualización de página simplificada en dispositivo móvil...). Puede utilizarse en un artículo de un foro,
     revista, artículo de periódico, entrada (post) de un blog, comentario escrito por un usuario, widget interactivo o
     gadget e incluso en cualquier otro elemento independiente de contenido. Cuando existen elementos
@@ -204,8 +177,7 @@
     <code>article</code> exteriores (por ejemplo, un <code>article</code> que contenga un artículo de un blog, contendrá
     también <code>article</code> para los comentarios de un usuario).
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;article&gt;
     ...
   &lt;/article&gt;
@@ -218,7 +190,6 @@
     &lt;/article&gt;
   &lt;/article&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <article>
       ...
@@ -240,13 +211,11 @@
     entonces se deberá utilizar el elemento <code>div</code>. El elemento <code>section</code> puede contener más
     elementos <code>section</code>.
   </p>
-  <div class="codigo-ejemplo">
-    <pre><code>
+  <pre class="codigo-ejemplo"><code>
   &lt;section&gt;
     Aquí va una sección de contenido.
   &lt;/section&gt;
     </code></pre>
-  </div>
   <div class="resultado-ejemplo">
     <section>
       Aquí va una sección de contenido.

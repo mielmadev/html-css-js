@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0px 60px;
+  background-color: #333;
+  color: #f9f9f9;
+  text-align: justify;
+}
+
+/* Azul claro para mejor contraste */
+.resultado-ejemplo {
+  color: #4fc3f7;
+}
+
+/* Violeta claro para mejor contraste */
+.codigo-ejemplo {
+  color: #b39ddb;
+  font-family: "Fira Mono", "Consolas", monospace;
+  font-size: 1em;
+  overflow-x: auto;
+  white-space: pre;
+  display: block;
+}
