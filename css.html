@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Css</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+  <header>
+    <h1>Documentación CSS</h1>
+    <img src="https://www.antxoa-dev.com/curso/mod-css/img/css-header.jpg" alt="CSS Header">
+  </header>
+  <main>
+    <section>
+      <h2>0. Presentación</h2>
+      <h3>¿Qué es CSS?</h3>
+      <p>
+        <strong>CSS</strong> (Cascading Style Sheets - Hojas de Estilo en Cascada) es un lenguaje de hoja de estilo
+        creado por el W3C que permite añadir estilos (tipografías, tamaños, espaciado, color...) y maquetación a los
+        documentos Web. CSS define cómo se presentan los elementos HTML en pantalla, papel o en otros medios,
+        permitiendo separar la estructura del contenido de su presentación visual.
+      </p>
+      <h3>Ventajas de CSS</h3>
+      <p>
+        Separando el estilo de presentación del contenido de los documentos, CSS simplifica la creación y mantenimiento
+        de los sitios Web. Además, permite reutilizar estilos en múltiples páginas, mejorar la accesibilidad y optimizar
+        el rendimiento al reducir la cantidad de código repetido. El uso de CSS facilita la adaptación de los sitios web
+        a diferentes dispositivos y resoluciones mediante técnicas como el diseño responsivo.
+      </p>
+      <h3>Estado actual de la especificación CSS</h3>
+      <p>
+        CSS está dividido en diferentes módulos (colores, bordes, posicionamiento...) y en cada módulo, los editores
+        trabajan a ritmos diferentes, por lo que algunos módulos han finalizado su desarrollo y otros acaban de empezar
+        a trabajar. Esto permite que nuevas funcionalidades se incorporen de forma progresiva, adaptándose a las
+        necesidades actuales del desarrollo web y mejorando la compatibilidad entre navegadores.
+      </p>
+      <h3>Soporte actual</h3>
+      <p>
+        Un <strong>motor de renderizado</strong> es el encargado de traducir el código de una página web (HTML, CSS,
+        JavaScript) en los elementos visuales que podemos ver y con los que podremos interactuar en nuestro navegador.
+        Ejemplos de motores de renderizado son Blink (usado por Chrome y Edge), Gecko (usado por Firefox) y WebKit
+        (usado por Safari).
+      </p>
+      <p>
+        Cada navegador utiliza un motor de renderizado concreto y va adoptando las nuevas propiedades a su ritmo. Hasta
+        hace unos años, mientras los navegadores probaban que la propiedad funcionase bien, solían implementar una
+        versión beta de dicha propiedad. Esta implementación se realizaba utilizando unos prefijos específicos (en
+        función de cada motor de renderizado) delante de la propiedad CSS a utilizar (por ejemplo
+        <code>-moz-nombrePropiedad</code>, <code>-webkit-nombrePropiedad</code>...) y en algunos ejemplos y páginas de
+        referencia aparecerán. Estos prefijos permitían a los desarrolladores experimentar con nuevas características
+        antes de que fueran oficialmente soportadas.
+      </p>
+      <p>
+        En la actualidad, los navegadores han modificado este método por otro más óptimo. En vez de utilizar prefijos,
+        utilizamos directamente la propiedad estándar y en la configuración del navegador habilitamos la característica
+        experimental. Esto mejora la interoperatividad y reduce la necesidad de escribir código específico para cada
+        navegador.
+      </p>
+    </section>
+    <section>
+      <h2>1. Insertar CSS</h2>
+      <h3>Métodos principales</h3>
+      <p>Existen cuatro formas de insertar código CSS en una página web, cada una con sus ventajas y desventajas
+        dependiendo del contexto y el tamaño del proyecto:</p>
+      <section>
+        <h4>Estilos externos</h4>
+        <p>Consiste en enlazar archivos CSS desde el elemento <code>&lt;head&gt;</code> del HTML. Esta es la forma más
+          recomendada para proyectos medianos y grandes, ya que permite mantener los estilos separados del contenido y
+          facilita la reutilización y el mantenimiento.</p>
+        <pre><code>&lt;link rel="stylesheet" href="ruta/estilos.css" type="text/css" media="all"&gt;</code></pre>
+        <ul>
+          <li><strong>href</strong>: Ruta al archivo CSS.</li>
+          <li><strong>rel</strong>: Relación de hoja de estilo.</li>
+          <li><strong>type</strong>: Tipo de contenido (opcional).</li>
+          <li><strong>media</strong>: Dispositivo destino. Permite aplicar estilos solo en ciertos dispositivos, como
+            impresoras o pantallas.</li>
+        </ul>
+      </section>
+      <section>
+        <h4>Estilos embebidos</h4>
+        <p>Se colocan dentro de la etiqueta <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code> del HTML. Son
+          útiles para definir estilos específicos de una sola página o para realizar pruebas rápidas sin crear archivos
+          externos.</p>
+        <pre><code>&lt;style type="text/css"&gt; ... &lt;/style&gt;</code></pre>
+        <p>Recomendado solo para casos puntuales, ya que mezclar estilos con contenido puede dificultar el mantenimiento
+          y la escalabilidad del sitio.</p>
+      </section>
+      <section>
+        <h4>Estilos en línea</h4>
+        <p>Se aplican directamente en el atributo <code>style</code> de un elemento HTML. Permiten modificar el aspecto
+          de un elemento concreto sin afectar a otros, pero no son recomendables para proyectos grandes por dificultar
+          la gestión de los estilos.</p>
+        <pre><code>&lt;a href="index.html" style="text-decoration:none"&gt;Inicio&lt;/a&gt;</code></pre>
+        <p>Solo recomendable en pruebas o contenido generado por usuarios, ya que puede afectar la coherencia visual y
+          la accesibilidad.</p>
+      </section>
+      <section>
+        <h4>La regla <code>@import</code></h4>
+        <p>Permite importar hojas de estilo dentro de otra hoja CSS. Es útil para organizar los estilos en módulos y
+          mantener el código más limpio y estructurado, especialmente en proyectos grandes. También facilita la
+          reutilización de estilos comunes entre diferentes archivos CSS.</p>
+        <pre><code>@import "ruta/hoja_de_estilo.css";</code></pre>
+        <p>Esta declaración debe ir al inicio del archivo CSS, antes de cualquier otra regla. Ten en cuenta que el uso
+          de <code>@import</code> puede provocar el efecto <strong>FUOC</strong> (Flash of Unstyled Content), donde la
+          página se muestra sin estilos brevemente mientras se cargan los archivos CSS importados. Por ello, se
+          recomienda usar <code>&lt;link&gt;</code> en el HTML para evitar este problema en sitios con mucho tráfico o
+          donde la experiencia de usuario sea crítica.</p>
+        <p>Es recomendable tener un archivo <strong>estilos.css</strong> con las reglas generales y comunes para todo el
+          sitio web. Así, solo necesitas importar este archivo en tus páginas y no tendrás que incluir cada regla
+          general por separado en todos los archivos. Esto facilita el mantenimiento, la coherencia visual y la
+          actualización de los estilos en todo el proyecto, permitiendo realizar cambios globales de forma rápida y
+          sencilla.</p>
+        <pre><code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code></pre>
+      </section>
+    </section>
+    <section>
+      <h3>Referencias</h3>
+      <p>Más información sobre CSS en los siguientes enlaces, donde puedes consultar documentación oficial, ejemplos y
+        recursos para profundizar en el uso de hojas de estilo:</p>
+      <ul>
+        <li><a href="https://es.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions">¿Qué son los MIME?</a></li>
+        <li><a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Listado IANA de MIME Types</a></li>
+        <li><a href="https://drafts.csswg.org/mediaqueries-4/#media-type">Atributos media</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Flash_of_unstyled_content">FUOC</a></li>
+        <li><a href="https://www.youtube.com/watch?v=sKhpFxyIhHU">Ejemplo FUOC y otro ejemplo</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>Ejercicio</h3>
+      <a href="Ejercicios/css-0-insercion/estilos.css">Estilos css</a>
+      <a href="Ejercicios/css-0-insercion/index.html">Index html</a>
+      <p>Realiza el ejercicio propuesto para practicar la inserción de estilos utilizando los diferentes métodos
+        explicados. Observa cómo cambia la presentación de la página según el método utilizado y reflexiona sobre cuál
+        es el más adecuado para cada situación.</p>
+    </section>
+    <section>
+      <h2>2. Validación</h2>
+      <p>
+        Al igual que hemos hecho con el código HTML, el código CSS lo tendremos que validar para evitar errores y malas
+        implementaciones.
+      </p>
+      <p>
+        En este caso es de vital importancia porque si hay un código erróneo, puede que no se visualice la página o que
+        no se aplique el formato visual que queramos.
+      </p>
+      <p>
+        Utilizaremos el validador de código CSS que el W3C pone a nuestra disposición. Y también lo podemos validar de 3
+        maneras diferentes:
+      </p>
+      <ol>
+        <li>Indicando la dirección web de una página que sea pública.</li>
+        <li>El validador busca las CSS enlazadas, embebidas...</li>
+        <li>Subiendo nuestro archivo CSS local.</li>
+        <li>Copiando y pegando todo el código fuente.</li>
+      </ol>
+      <ul>
+        <li>
+          <a href="https://jigsaw.w3.org/css-validator/#validate_by_upload" target="_blank" rel="noopener">
+            Validar por subida de archivo (W3C)
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>3. Anatomía CSS</h2>
+      <img src="https://www.antxoa-dev.com/curso/mod-css/img/anatomia-css.jpg" alt="Anatomía CSS">
+      <p>
+        CSS tiene sus propias reglas y normas de escritura que debemos entender y aprender para poder escribir código
+        correctamente. Seguir estas normas es esencial para que los estilos se apliquen correctamente y de forma
+        consistente en todos los navegadores.
+      </p>
+      <section>
+        <h3>Reglas CSS</h3>
+        <p>
+          La estructura básica de un código CSS es la siguiente:
+        </p>
+        <figure>
+          <pre><code>selector { propiedad : valor ; }</code></pre>
+          <figcaption>Ejemplo de regla CSS básica</figcaption>
+        </figure>
+        <p>
+          Toda esta estructura completa se denomina <strong>regla predeterminada</strong>, comúnmente abreviada como
+          <strong>regla</strong>, y cada parte de esta estructura tiene una funcionalidad específica:
+        </p>
+        <dl>
+          <dt>Selector</dt>
+          <dd>
+            Es el elemento al que vamos a aplicar el estilo. Este selector puede ser un elemento HTML directamente
+            (<code>p</code>, <code>a</code>, <code>header</code>...), o podemos llamarlo mediante su id, árbol
+            genealógico, etc. Más adelante veremos todos los tipos de selectores que existen.<br>
+            También podemos tener un selector compuesto de varios elementos que compartan las mismas declaraciones:
+            <figure>
+              <pre><code>selector1, selector2 { propiedad : valor ; }</code></pre>
+              <figcaption>Ejemplo de selector compuesto</figcaption>
+            </figure>
+          </dd>
+          <dt>Declaración</dt>
+          <dd>
+            Se compone de dos partes: propiedad y valor de la propiedad.<br>
+            Un selector puede tener varias declaraciones a la vez (por ejemplo, podemos indicar el color, el tamaño y la
+            tipografía de un selector):
+            <figure>
+              <pre><code>selector {
+  propiedad1 : valor ;
+  propiedad2 : valor ;
+  propiedad3 : valor ;
+  ...
+}</code></pre>
+              <figcaption>Ejemplo de varias declaraciones en una regla</figcaption>
+            </figure>
+          </dd>
+          <dt>Propiedad</dt>
+          <dd>
+            Cada una de las opciones de estilo que existen. El color, el tamaño, la tipografía, el borde, etc. todos son
+            propiedades y se indicarán mediante un nombre específico.
+          </dd>
+          <dt>Valor de la propiedad</dt>
+          <dd>
+            Indica el valor de la propiedad. Cada propiedad tiene diferentes posibilidades de valores (por ejemplo, para
+            los tamaños se utilizarán unidades de medida y para los colores, diferentes formas de código de color).
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3>Otras particularidades</h3>
+        <ul>
+          <li><strong>Llaves:</strong> Las declaraciones de un selector deben estar encapsuladas entre llaves
+            <code>{ }</code>.
+          </li>
+          <li><strong>Dos puntos:</strong> En cada declaración se deben utilizar los dos puntos <code>:</code> para
+            separar la propiedad de su valor.</li>
+          <li><strong>Punto y coma:</strong> En cada regla se debe usar el punto y coma <code>;</code> para separar una
+            declaración de la siguiente.</li>
+        </ul>
+        <p>
+          En el siguiente ejemplo vemos una regla sobre el selector <code>p</code> con 5 declaraciones:
+        </p>
+        <figure>
+          <pre><code>p {
+  color: red;
+  background: #CCC;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 30px;
+}</code></pre>
+          <figcaption>Ejemplo de regla con varias declaraciones</figcaption>
+        </figure>
+        <p>
+          Y ahora una regla con un selector compuesto de varios elementos que comparten las mismas declaraciones:
+        </p>
+        <figure>
+          <pre><code>p, li {
+  color: red;
+  font-weight: bold;
+}</code></pre>
+          <figcaption>Ejemplo de selector compuesto</figcaption>
+        </figure>
+      </section>
+      <section>
+        <h3>Comentarios</h3>
+        <p>
+          Para comentar un código CSS tenemos la siguiente sintaxis:
+        </p>
+        <figure>
+          <pre><code>/* comentarios */</code></pre>
+          <figcaption>Ejemplo de comentario en CSS</figcaption>
+        </figure>
+        <p>
+          Los comentarios abarcan el bloque completo desde el inicio al final del comentario y no podemos meter un
+          comentario dentro de otro.
+        </p>
+      </section>
+      <section>
+        <h3>Minimizar CSS</h3>
+        <p>
+          Minimizar el código CSS consiste en eliminar espacios, saltos de línea y comentarios innecesarios para reducir
+          el tamaño del archivo y mejorar el tiempo de carga de la web. Es una práctica recomendada especialmente en
+          proyectos en producción.
+        </p>
+        <p>
+          Puedes utilizar herramientas en línea para minimizar tu CSS, como <a href="https://cssminifier.com/"
+            target="_blank" rel="noopener">CSS Minifier</a>.
+        </p>
+      </section>
+    </section>
+    <section>
+      <h2>6. Colores</h2>
+      <h3>Propiedad color de texto</h3>
+      <p>
+        La propiedad <strong>color</strong> es una de las más sencillas de la especificación CSS. Basta con usar la
+        propiedad <code>color</code> y, como valor, indicar el color deseado:
+      </p>
+      <pre><code>color: valor del color;</code></pre>
+      <p>
+        Ejemplos:
+      </p>
+      <pre><code>color: red;
+color: rgb(255,0,0);
+color: rgba(255,0,0,0.7);
+color: #FF0000;</code></pre>
+      <p>
+        Existen diferentes maneras de indicar el color, útiles también para fondos, bordes, sombras, etc.
+      </p>
+
+      <h3>Color con nombre estándar</h3>
+      <p>
+        Disponemos de una lista de nombres oficiales de colores que podemos utilizar (no se pueden inventar nombres).
+        Algunos ejemplos son <code>red</code>, <code>blue</code>, <code>green</code>, <code>yellow</code>,
+        <code>black</code>, <code>white</code>, <code>gray</code>, <code>orange</code>, <code>purple</code>,
+        <code>pink</code>, <code>brown</code>, entre otros. Puedes consultar la lista completa en la documentación
+        oficial de CSS.
+      </p>
+      <pre><code>color: red;</code></pre>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Colorwheel.svg"
+          alt="Rueda de colores por Anthony Lieuallen" width="200">
+        <figcaption>Rueda de colores por Anthony Lieuallen</figcaption>
+      </figure>
+
+      <h3>Color RGB / RGBA</h3>
+      <p>
+        Representa el color mezclando valores de Rojo, Verde y Azul (Red, Green, Blue = RGB). El rango de cada valor es
+        de 0 a 255 y se representa entre paréntesis, separados por comas. Es posible utilizar la notación en minúsculas
+        o mayúsculas (<code>rgb</code> o <code>RGB</code>).
+      </p>
+      <pre><code>color: rgb(0-255, 0-255, 0-255);</code></pre>
+      <p>
+        Ejemplo para rojo máximo:
+      </p>
+      <pre><code>color: rgb(255,0,0);</code></pre>
+      <p>
+        RGBA añade el canal Alpha para transparencia (valor entre 0 y 1):
+      </p>
+      <pre><code>color: rgba(255,0,0,0.5); /* rojo 50% de transparencia */</code></pre>
+      <p>
+        Sintaxis actualizada para canal Alpha:
+      </p>
+      <pre><code>color: rgb(255 0 0 / 0.5);</code></pre>
+      <figure>
+        <figcaption>Ejemplo de mezclador de colores</figcaption>
+        <pre><code>RGB: 128, 128, 128
+HEX: #808080</code></pre>
+      </figure>
+      <p>
+        El canal Alpha permite crear efectos de transparencia y superposición, muy útiles en interfaces modernas y
+        diseños responsivos.
+      </p>
+
+      <h3>Color hexadecimal</h3>
+      <p>
+        Representa el color RGB en formato hexadecimal. Es un código de 6 caracteres (o 3 si se puede abreviar). Los dos
+        primeros caracteres representan la cantidad de rojo, los dos siguientes la cantidad de verde y los dos últimos
+        la cantidad de azul. El rango va de 0 a F. El formato hexadecimal es ampliamente utilizado por su brevedad y
+        compatibilidad.
+      </p>
+      <pre><code>color: #FF0000;</code></pre>
+      <h4>Equivalencia dígitos Decimal a Hexadecimal</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Decimal</th>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+          </tr>
+          <tr>
+            <th>Hexadecimal</th>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+          </tr>
+        </thead>
+      </table>
+      <p>
+        En el color hexadecimal siempre hay que escribir el símbolo <code>#</code> por delante del número. Es posible
+        utilizar la notación abreviada cuando los pares de dígitos son iguales.
+      </p>
+      <h4>Hexadecimal abreviado</h4>
+      <p>
+        Cuando los dos dígitos de cada componente (rojo, verde, azul) son idénticos, el código hexadecimal se puede
+        abreviar a 3 caracteres (<code>#RGB</code>):
+      </p>
+      <pre><code>color: #FF0000;   color: #F00;
+color: #FFFFFF;   color: #FFF;
+color: #003355;   color: #035;
+color: #00AAAA;   color: #0AA;
+color: #CCCCAA;   color: #CCA;</code></pre>
+      <p>
+        No se puede abreviar, por ejemplo, <code>#C0FE57</code> ni <code>#CC8857</code> si alguno de los pares no tiene
+        dígitos repetidos.
+      </p>
+      <h4>Hexadecimal con canal Alpha</h4>
+      <p>
+        Es posible añadir el canal Alpha, añadiendo dos dígitos más:
+      </p>
+      <pre><code>color: #FF000080; /* Rojo con transparencia al 50% */</code></pre>
+      <p>
+        El canal Alpha en hexadecimal permite definir la opacidad del color directamente en el código, facilitando la
+        creación de efectos visuales avanzados.
+      </p>
+
+      <h3>Color HSL/HSLA</h3>
+      <p>
+        El modelo <strong>HSL</strong> (Hue, Saturation, Lightness) permite definir colores de forma intuitiva y
+        flexible. Se compone de tres parámetros:
+      </p>
+      <ul>
+        <li><strong>Tono (Hue):</strong> Representa el color base en la rueda cromática. Se expresa en grados (0-360),
+          donde 0 es rojo, 120 es verde, 240 es azul, etc.</li>
+        <li><strong>Saturación (Saturation):</strong> Indica la intensidad o pureza del color. Se expresa en porcentaje
+          (0% es gris, 100% es color puro).</li>
+        <li><strong>Luminosidad (Lightness):</strong> Define la claridad u oscuridad del color. 0% es negro, 100% es
+          blanco, 50% es el color puro.</li>
+      </ul>
+      <p>Para añadir transparencia, se usa el modelo <strong>HSLA</strong> o la barra divisoria <code>/</code>:</p>
+      <pre><code>color: hsl(207, 38%, 47%);
+color: hsla(207, 38%, 47%, 0.8);
+color: hsl(207 38% 47% / 0.8);</code></pre>
+      <h4>Ejemplo visual</h4>
+      <ul>
+        <li><code>hsl(0, 100%, 50%)</code> → Rojo puro</li>
+        <li><code>hsl(120, 100%, 50%)</code> → Verde puro</li>
+        <li><code>hsl(240, 100%, 50%)</code> → Azul puro</li>
+        <li><code>hsl(0, 0%, 50%)</code> → Gris medio</li>
+      </ul>
+      <h4>Ventajas de HSL</h4>
+      <ul>
+        <li>Permite crear y modificar paletas de colores fácilmente, ajustando solo el tono para obtener variantes.</li>
+        <li>Facilita la accesibilidad, ya que puedes controlar el contraste y la luminosidad de los colores.</li>
+        <li>Ideal para temas claros/oscuro y para generar gamas armónicas.</li>
+      </ul>
+      <h4>Cómo crear paletas con HSL</h4>
+      <p>Para crear una paleta, puedes mantener el mismo tono y variar la saturación o luminosidad. Ejemplo:</p>
+      <pre><code>/* Tonos de azul */
+color: hsl(220, 80%, 30%); /* azul oscuro */
+color: hsl(220, 80%, 60%); /* azul medio */
+color: hsl(220, 80%, 90%); /* azul claro */</code></pre>
+      <h4>Herramientas útiles</h4>
+      <ul>
+        <li><a href="https://www.colorpicker.com/" target="_blank" rel="noopener">Color Picker</a> para experimentar con
+          HSL.</li>
+        <li><a href="https://www.w3schools.com/colors/colors_hsl.asp" target="_blank" rel="noopener">W3Schools: Colores
+            HSL</a></li>
+        <li><a href="https://www.cssgradient.io/" target="_blank" rel="noopener">CSS Gradient</a> para crear degradados
+          con HSL.</li>
+      </ul>
+      <p>HSL y HSLA son especialmente útiles para generar paletas de colores y modificar el tono, saturación o
+        luminosidad de manera sencilla, lo que facilita la personalización y el diseño visual coherente.</p>
+
+      <h3>Otros Colores</h3>
+      <p>
+        Actualmente existen otras maneras adicionales para indicar un color en CSS, como <code>p3</code>,
+        <code>lch</code>, <code>oklch</code>, mezclador de colores, entre otros. Estas opciones permiten una mayor
+        precisión y control sobre la representación cromática, especialmente en pantallas modernas y para trabajos de
+        diseño avanzado.
+      </p>
+      <ul>
+        <li><strong>Color <code>p3</code>:</strong> Permite usar el espacio de color Display-P3, que tiene una gama más
+          amplia que sRGB. Ejemplo: <code>color: color(display-p3 1 0 0);</code></li>
+        <li><strong>Color <code>lch</code>:</strong> Basado en la percepción humana, facilita la creación de colores
+          accesibles y armoniosos. Ejemplo: <code>color: lch(50% 80 40);</code></li>
+        <li><strong>Color <code>oklch</code>:</strong> Variante moderna de LCH, aún más precisa y recomendada para
+          accesibilidad. Ejemplo: <code>color: oklch(0.7 0.1 200);</code></li>
+        <li><strong>Mezclador de colores:</strong> Puedes combinar colores usando la función <code>color-mix()</code>.
+          Ejemplo: <code>color: color-mix(in srgb, red 60%, blue 40%);</code></li>
+      </ul>
+      <p>
+        Estas sintaxis avanzadas requieren navegadores actualizados y conocimientos específicos, por lo que suelen verse
+        en cursos avanzados o proyectos profesionales. Permiten trabajar con gamas extendidas, degradados complejos y
+        mejorar la accesibilidad visual.
+      </p>
+      <p>
+        Además, puedes utilizar herramientas como <a href="https://www.colorpicker.com/" target="_blank"
+          rel="noopener">colorpicker.com</a>, <a href="https://www.w3schools.com/colors/colors_picker.asp"
+          target="_blank" rel="noopener">W3Schools Color Picker</a> o <a href="https://lea.verou.me/css-colors/"
+          target="_blank" rel="noopener">CSS Colors (Lea Verou)</a> para experimentar y obtener códigos de color
+        fácilmente, incluyendo los nuevos formatos.
+      </p>
+      <p>
+        Recuerda que elegir colores adecuados mejora la accesibilidad y la experiencia de usuario en tu sitio web.
+      </p>
+    </section>
+
+    <section>
+      <h3>Referencias</h3>
+      <ul>
+        <li><a href="https://www.joshwcomeau.com/css/color-formats/" target="_blank" rel="noopener">Color en
+            profundidad</a></li>
+        <li><a href="https://lea.verou.me/blog/2020/04/lch-colors-in-css-what-why-and-how/" target="_blank"
+            rel="noopener">Color LCH avanzado</a></li>
+        <li><a href="https://css-tricks.com/nerds-guide-color-web/" target="_blank" rel="noopener">Otras expresiones de
+            color</a></li>
+        <li><a href="https://www.w3.org/wiki/CSS/Properties/color/keywords" target="_blank" rel="noopener">Lista de
+            Colores oficiales</a></li>
+        <li><a href="https://es.wikipedia.org/wiki/Sistema_hexadecimal" target="_blank" rel="noopener">Sistema
+            Hexadecimal</a></li>
+        <li><a href="https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4" target="_blank" rel="noopener">Valores
+            Alpha en Hex</a></li>
+        <li><a href="https://www.microsiervos.com/archivo/internet/hiperenlaces-azules.html" target="_blank"
+            rel="noopener">¿Por qué los enlaces son azules?</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>Recursos</h3>
+      <ul>
+        <li><a href="https://htmlcolorcodes.com/es/" target="_blank" rel="noopener">Recursos de Colores</a></li>
+        <li><a href="https://fffuel.co/" target="_blank" rel="noopener">Múltiples herramientas para colores</a></li>
+        <li><a href="https://www.colourlovers.com/palettes" target="_blank" rel="noopener">Elegir paleta de colores
+            1</a></li>
+        <li><a href="https://palettes.shecodes.io/" target="_blank" rel="noopener">Elegir paleta de colores 2</a></li>
+        <li><a href="https://fffuel.co/pppalette/" target="_blank" rel="noopener">Crear paletas de colores 1</a></li>
+        <li><a href="https://coolors.co/" target="_blank" rel="noopener">Crear paletas de colores 2</a></li>
+        <li><a href="https://supercolorpalette.com/" target="_blank" rel="noopener">Crear paletas de colores 3</a></li>
+        <li><a href="https://www.learnui.design/tools/data-color-picker.html#palette" target="_blank"
+            rel="noopener">Crear paletas de colores para visualización de datos</a></li>
+        <li><a href="https://colorkit.co/color-palette-from-image/" target="_blank" rel="noopener">Generar paleta de
+            colores en base a una imagen</a></li>
+    </section>
+    <section>
+      <h2>7. Fondos</h2>
+      <p>Disponemos de múltiples opciones de configuración de los fondos en CSS. Los fondos permiten mejorar la estética
+        y la legibilidad de los elementos, y pueden combinarse para crear efectos visuales avanzados en cualquier parte
+        de la página web.</p>
+      <h3>Color de fondo</h3>
+      <p>Para aplicar un color de fondo utilizamos la propiedad <code>background-color</code>. Se puede usar cualquier
+        formato de color admitido por CSS: nombre estándar, hexadecimal, RGB, RGBA, HSL, HSLA, etc. Es importante elegir
+        colores que garanticen buen contraste y accesibilidad para los usuarios.</p>
+      <pre><code>background-color: #000000;
+        background-color: rgb(255,255,255);
+        background-color: hsl(0, 0%, 100%);</code></pre>
+      <h3>Imagen de fondo</h3>
+      <p>En un fondo también podemos poner una imagen, además de un color, con diferentes parámetros. Las imágenes de
+        fondo pueden ser archivos locales o enlaces externos, y se recomienda optimizarlas para mejorar el rendimiento
+        de la web. Es posible combinar color e imagen para lograr efectos de superposición.</p>
+      <ul>
+        <li><strong>Imagen:</strong> Indicamos la ruta donde se encuentra la imagen. La ruta tiene que ser relativa al
+          archivo CSS o absoluta si es externa.<br>
+          <code>background-image: url(ruta/imagen1.png);</code><br>
+          <code>background-image: url('https://ejemplo.com/fondo.jpg');</code>
+        </li>
+        <li><strong>Repetición:</strong> Indicamos si vamos a repetir la imagen en modo mosaico, en el eje X, en el Y, o
+          no se repetirá. Usar <code>no-repeat</code> es útil para logos o imágenes decorativas, mientras que
+          <code>repeat</code> es ideal para patrones.<br>
+          <code>background-repeat: repeat;</code> (mosaico)<br>
+          <code>background-repeat: no-repeat;</code> (no se repite)<br>
+          <code>background-repeat: repeat-x;</code> (eje X)<br>
+          <code>background-repeat: repeat-y;</code> (eje Y)<br>
+          <code>background-repeat: space;</code> (rellena con espacio)<br>
+          <code>background-repeat: round;</code> (escala para ajustarse)
+        </li>
+        <li><strong>Posición:</strong> Indicamos la posición de la imagen, bien con palabras clave o mediante
+          coordenadas. Se pueden usar porcentajes, píxeles o palabras clave para adaptar la imagen al diseño.<br>
+          <code>background-position: left top;</code><br>
+          <code>background-position: center bottom;</code><br>
+          <code>background-position: right center;</code><br>
+          <code>background-position: 50% 20%;</code><br>
+          <code>background-position: 25px 100px;</code>
+        </li>
+        <li><strong>Comportamiento:</strong> Permite indicar el comportamiento de la imagen de fondo cuando se hace
+          scroll. <code>fixed</code> mantiene la imagen fija en la ventana, creando el efecto "parallax".<br>
+          <code>background-attachment: scroll;</code> (no fija)<br>
+          <code>background-attachment: fixed;</code> (fija)
+        </li>
+      </ul>
+      <h3>Forma abreviada</h3>
+      <p>Todas estas propiedades se pueden escribir de forma abreviada en una sola línea, lo que facilita la gestión y
+        el mantenimiento del código. El orden de los valores es importante: color, imagen, repetición, comportamiento y
+        posición.</p>
+      <pre><code>background: #000 url(images/imagen1.png) no-repeat fixed left bottom;</code></pre>
+      <p>Si solo usamos el color de fondo:</p>
+      <pre><code>background-color: #000; /* Forma larga */
+        background: #000; /* Forma corta */</code></pre>
+      <p>Si no queremos color de fondo, usamos <code>transparent</code>:</p>
+      <pre><code>background: transparent url(images/imagen1.png) no-repeat fixed left bottom;</code></pre>
+      <h3>Orden de las propiedades en background abreviado</h3>
+      <p>En la forma abreviada de <code>background</code>, el orden de los valores es importante para que el navegador
+        los interprete correctamente. El orden estándar recomendado es:</p>
+      <ol>
+        <li><strong>Color de fondo</strong></li>
+        <li><strong>Imagen de fondo (url)</strong></li>
+        <li><strong>Repetición</strong> (<code>repeat</code>, <code>no-repeat</code>, <code>repeat-x</code>,
+          <code>repeat-y</code>, <code>space</code>, <code>round</code>)
+        </li>
+        <li><strong>Comportamiento</strong> (<code>scroll</code>, <code>fixed</code>)</li>
+        <li><strong>Posición</strong> (<code>left top</code>, <code>center</code>, <code>right bottom</code>, etc.)</li>
+        <li><strong>Tamaño</strong> (usando <code>/</code>, por ejemplo: <code>center/cover</code>)</li>
+      </ol>
+      <p>No es obligatorio escribir todos los valores, pero este orden facilita la interpretación y el mantenimiento del
+        código. Ejemplo completo:</p>
+      <pre><code>background: #ffcc00 url('fondo.png') no-repeat fixed center/cover;</code></pre>
+      <p>Si omites algún valor, el navegador usará el valor por defecto para esa propiedad.</p>
+      <h3>Otras propiedades</h3>
+      <ul>
+        <li><strong>background-size:</strong> Ajusta el tamaño de la imagen. <code>cover</code> hace que la imagen cubra
+          todo el elemento, aunque se recorte; <code>contain</code> ajusta la imagen para que se vea completa.<br>
+          <code>background-size: 100%;</code> (100% anchura, altura automática)<br>
+          <code>background-size: 100% 50%;</code> (100% anchura, 50% altura)<br>
+          <code>background-size: cover;</code> (cubre el bloque)<br>
+          <code>background-size: contain;</code> (se ve toda la imagen)
+        </li>
+        <li><strong>background-clip:</strong> Especifica si el fondo se extiende por debajo del borde, margen interno o
+          contenido. <code>text</code> permite aplicar fondos a texto, creando efectos visuales avanzados.<br>
+          <code>background-clip: border-box;</code><br>
+          <code>background-clip: padding-box;</code><br>
+          <code>background-clip: content-box;</code><br>
+          <code>background-clip: text;</code> <br> <code>color: transparent;</code> (necesario para texto)
+        </li>
+        <li><strong>background-origin:</strong> Especifica el área de origen del fondo para calcular la posición de
+          inicio. Permite controlar si la imagen se posiciona desde el borde, el padding o el contenido.</li>
+      </ul>
+      <h3>Múltiples imágenes de fondo</h3>
+      <p>Para utilizar varias imágenes de fondo en el mismo elemento, se separan por comas. Es posible crear
+        composiciones visuales complejas, como marcos decorativos o efectos de superposición. Recuerda que solo se puede
+        poner un color de fondo, por lo que si se quiere añadirlo, se usa <code>background-color</code> aparte.</p>
+      <pre><code>blockquote {
+          background:
+            url(quote_open.gif) no-repeat top left,
+            url(quote_close.gif) no-repeat bottom right;
+          background-color: #CCC;
+        }</code></pre>
+      <p>Las imágenes de fondo no afectan el contenido ni la estructura del documento, pero pueden influir en la
+        legibilidad y la experiencia visual. Es recomendable probar los fondos en diferentes dispositivos y resoluciones
+        para asegurar una buena presentación.</p>
+      <h3>Prioridad entre color e imagen de fondo</h3>
+      <p>Cuando se utiliza la forma abreviada <code>background: color url()</code>, el color de fondo se aplica primero
+        y la imagen se dibuja encima. Por lo tanto, la imagen tiene prioridad visual sobre el color. El color solo será
+        visible en las siguientes situaciones:</p>
+      <ul>
+        <li>Si la imagen tiene zonas transparentes (por ejemplo, formato PNG con transparencia), el color se verá en
+          esas áreas.</li>
+        <li>Si la imagen es más pequeña que el área del elemento y no se repite, el color será visible en las partes no
+          cubiertas por la imagen.</li>
+        <li>Si se usan varias imágenes de fondo con transparencias, el color puede aparecer debajo de todas ellas.</li>
+      </ul>
+      <p>En la práctica, el color de fondo actúa como "base" y la imagen como "capa superior". Esto es útil para
+        asegurar que el fondo nunca quede vacío si la imagen tarda en cargar, falla o no cubre todo el espacio.</p>
+      <p><strong>Ejemplo visual:</strong></p>
+      <pre><code>background: #ffcc00 url('logo.png') no-repeat center;
+        </code></pre>
+      <p>Si <code>logo.png</code> tiene transparencia, el color amarillo <code>#ffcc00</code> será visible en el fondo.
+        Si la imagen cubre todo el área y es opaca, el color no se verá.</p>
+    </section>
+    <section>
+      <h3>Referencias</h3>
+      <ul></ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip">background-clip</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin">background-origin</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>ejemplos</h3>
+      <a href="https://codepen.io/antxoa/pen/bGXywKq/">background-clip</a>
+    </section>
+  </main>
+  <footer>
+    <hr>
+    <p><small>Última actualización: 16 de septiembre de 2025</small></p>
+  </footer>
+</body>
+
+</html>

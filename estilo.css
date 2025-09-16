@@ -7,6 +7,47 @@ body {
   text-align: justify;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+pre code {
+  background-color: #232a36; /* azul oscuro */
+  color: #ffeb3b; /* texto amarillo */
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+code {
+  background-color: #2c2c2c; /* gris oscuro */
+  color: #4fc3f7; /* texto azul claro */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: "Fira Mono", "Consolas", monospace;
+}
+
+a {
+  color: #81d4fa; /* azul claro */
+  text-decoration: none;
+}
+
+h1 {
+  color: #ff9800; /* Naranja */
+}
+
+h2 {
+  color: #4fc3f7; /* Azul claro */
+}
+
+h3 {
+  color: #81c784; /* Verde claro */
+}
+
+h4 {
+  color: #e57373; /* Rojo suave */
+}
+
 /* Azul claro para mejor contraste */
 .resultado-ejemplo {
   color: #4fc3f7;
