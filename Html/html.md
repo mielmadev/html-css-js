@@ -20,6 +20,23 @@ HTML es gestionado por el **World Wide Web Consortium (W3C)**, encargado de esta
 
 ### Archivos y nombres
 Para crear una página web, crea un archivo `index.html` en minúsculas, sin tildes, símbolos ni espacios (usa guión medio). La extensión recomendada es `.html`.
+## Nomenclatura de archivos HTML
+
+Al nombrar archivos HTML, sigue estas recomendaciones:
+
+- Usa solo letras minúsculas, números y guiones medios (`-`).
+- Puedes empezar el nombre con un número si lo necesitas (por ejemplo, `1-inicio.html`, `7-fondos.html`).
+- No uses espacios, tildes ni caracteres especiales como `*`, `?`, `/`, `\`, `:`, etc.
+- La extensión debe ser `.html`.
+- El nombre debe ser claro y descriptivo sobre el contenido del archivo.
+
+Ejemplo de nombres válidos:
+- `index.html`
+- `contacto.html`
+- `2-galeria.html`
+- `ejercicio-3.html`
+
+Esta nomenclatura facilita la organización, compatibilidad y mantenimiento de tus proyectos web.
 
 ### Elementos y Etiquetas
 El código HTML se compone de elementos representados por etiquetas. Los elementos pueden contener otros elementos, formando una estructura jerárquica.
