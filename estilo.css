@@ -68,6 +68,7 @@ h4,
 h5,
 h6 {
   font-family: "Metal Mania", system-ui;
+  font-weight: 400;
 }
 h1 {
   color: #ff9800;
@@ -122,4 +123,8 @@ small {
 .codigo-ejemplo {
   color: #b39ddb;
   font-family: "Fira Mono", "Consolas", monospace;
+}
+
+.subrayado {
+  text-decoration: underline;
 }
