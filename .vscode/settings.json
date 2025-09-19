@@ -4,6 +4,7 @@
     "Berners",
     "boton",
     "cancion",
+    "caracter",
     "codigo",
     "englobamiento",
     "envio",
@@ -26,6 +27,7 @@
     "renderizado",
     "reseteo",
     "semitransparencia",
+    "sobrescribirlo",
     "Tarrina",
     "Valoracion"
   ]

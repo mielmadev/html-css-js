@@ -33,6 +33,11 @@ code {
   font-family: "Fira Mono", "Consolas", monospace;
   font-size: 1.4rem;
 }
+
+pre {
+  font-size: 1.4rem;
+  color: #b39ddb;
+}
 pre code {
   background-color: transparent;
   color: #ffeb3b;
@@ -68,7 +73,9 @@ h4,
 h5,
 h6 {
   font-family: "Metal Mania", system-ui;
-  font-weight: 400;
+  font-weight: 500;
+  border-left: currentColor 5px solid;
+  padding-left: 10px;
 }
 h1 {
   color: #ff9800;
@@ -102,7 +109,9 @@ button,
 select,
 textarea,
 strong,
-em {
+em,
+caption,
+figcaption {
   font-size: 1.4rem;
 }
 
@@ -115,6 +124,10 @@ small {
   font-size: 1.2rem;
 }
 
+div {
+  font-size: 1.4rem;
+  color: #333;
+}
 /* === Clases personalizadas === */
 .resultado-ejemplo {
   color: #4fc3f7;
